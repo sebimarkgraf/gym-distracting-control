@@ -13,9 +13,8 @@ Then in your python script:
 ```python
 import gym
 
-env = gyn.make('gdc:Hopper-hop-easy-v1', from_pixel=True)
+env = gyn.make('distracting_control/Hopper-hop-easy-v1', from_pixel=True)
 obs = env.reset()
-doc.figure(obs, "figures/hopper_readme.png")
 ```
 
 ## Detailed API
@@ -24,12 +23,12 @@ Take a look at the test file in the [./specs](./specs) folder, and the source co
 
 ```python
 def test_max_episode_steps():
-    env = gym.make('distracting_control:Walker-walk-easy-v1')
+    env = gym.make('distracting_control/Walker-walk-easy-v1')
     assert env._max_episode_steps == 250
 
 
 def test_flat_obs():
-    env = gym.make('distracting_control:Walker-walk-easy-v1', frame_skip=4)
+    env = gym.make('distracting_control/Walker-walk-easy-v1', frame_skip=4)
     env.env.env.env.observation_spec()
     assert env.reset().shape == (24,)
 
@@ -45,7 +44,7 @@ def test_channel_first():
 
 
 def test_channel_last():
-    env = gym.make('distracting_control:Walker-walk-easy-v1', from_pixels=True, frame_skip=8, channels_first=False)
+    env = gym.make('distracting_control/Walker-walk-easy-v1', from_pixels=True, frame_skip=8, channels_first=False)
     assert env._max_episode_steps == 125
     assert env.reset().shape == (84, 84, 3)
 ```
